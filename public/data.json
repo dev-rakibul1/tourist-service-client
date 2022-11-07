@@ -1,0 +1,50 @@
+[
+  {
+    "title": "Eiffel Tower, Paris",
+    "images": "https://i.ibb.co/HCff3CQ/6.jpg",
+    "rating": "4.7",
+    "charge": "700",
+    "area": "Paris",
+    "description": "The symbol of Paris and one of the most photographed structures in the world, a visit to the Eiffel Tower is a must for all travelers. Few landmarks inspire such a passion for travel as this single iron structure. Young travelers heading out on the road for the first time, couples looking for a special getaway, artists looking to spur their creativity, and romantics of all types are all drawn to Paris. This is a city where history and culture collide and where travelers of all kinds can find the experience they're after."
+  },
+  {
+    "title": " Statue of Liberty, New York City",
+    "images": "https://i.ibb.co/KwdrS8K/13.jpg",
+    "rating": "4.9",
+    "charge": "1700",
+    "area": "New York City",
+    "description": "America is full of great sights and places to visit, but it's the Statue of Liberty that represents the United States like no other place. This symbol of freedom in New York City was gifted by the French to the American people in 1896.Of all the attractions in New York City, this is one every tourist must see. The best thing to do at the Statue of Liberty is to take a ride up to her crown and soak up the view over the city. Access to the statue is via ferry, also a highlight of a visit."
+  },
+  {
+    "title": "Great Wall of China",
+    "images": "https://i.ibb.co/pxQZvwM/2.jpg",
+    "rating": "4.6",
+    "charge": "1200",
+    "area": "China",
+    "description": "In a land of modern cities and towering skyscrapers, the Great Wall of China, built between the 14th and 17th centuries, is a stark contrast but a striking image that all visitors to China should see. A stroll along the top of the wall provides an incredible view of the structure snaking off into the distance. The wall stretches an astounding 21,196 kilometers, through some remote areas.Many travelers seeing the sights of China choose to visit the wall on easily organized tours from Beijing, a relatively short motorcoach ride away."
+  },
+  {
+    "title": "Grand Canyon, USA",
+    "images": "https://i.ibb.co/1bX4p6B/1.jpg",
+    "rating": "4.0",
+    "charge": "1300",
+    "area": "USA",
+    "description": "The greatest natural attraction in the United States, the Grand Canyon is a key sight for all travelers planning their lifetime of adventures. Standing on the rim of the Grand Canyon, looking out over the carved landscape, will awaken your senses.Several hikes in the canyon and along the rim offer unique perspectives. Walk even a short distance down the Bright Angel trail to gain additional views and to experience what the canyon is like below the rim. For even more adventure plan a rafting trip down the Colorado River through the canyon.The Grand Canyon looks different throughout the day and at different times of the year. One trip is never enough. If you are going to add this place to your to-see list, consider what you want to do here to determine the best time to visit."
+  },
+  {
+    "title": "Stonehenge, England",
+    "images": "https://i.ibb.co/MhZR6pb/5.jpg",
+    "rating": "4.9",
+    "charge": "2500",
+    "area": "England",
+    "description": "Stonehenge is one of those places that makes you ponder what went on here over 4,500 years ago. It's long been a mystery to historians, and has captured the imagination of countless visitors. Despite the large number of tourists that descend on Stonehenge, the place still has a mystical feel.At the site, giant stones, some standing, some fallen, are set in two roughly circular patterns that are oriented to highlight the summer and winter solstices. For a truly memorable experience, plan your visit during one of these times.An easy day trip from London, Stonehenge can easily be worked into your UK itinerary."
+  },
+  {
+    "title": "Niagara Falls, Canada & USA",
+    "images": "https://i.ibb.co/qkxtKTD/8.jpg",
+    "rating": "5",
+    "charge": "3500",
+    "area": "Canada & USA",
+    "description": "On the border between the United States and Canada, these great falls have been drawing explorers and travelers for centuries. Just over an hour from the city of Toronto, Niagara Falls is easy to get to, and the town is a fun place to spend a night or two. Walk up to the edge of the falls, stroll along the paved walk lining the gorge for different views, or take a boat tour for a close-up look at the water pouring over the lip of the gorge above you. For a bird's-eye view, head up the Skylon Tower to look out over the falls.At night, see the falls lit in different colors. If you're visiting in winter, watch the huge plume of mist rising into the sky above the falls."
+  }
+]
