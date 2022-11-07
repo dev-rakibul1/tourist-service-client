@@ -1,5 +1,7 @@
 import React from "react";
 import Tour from "../tour/Tour";
+import TourApp from "../tourApp/TourApp";
+import TravelMode from "../travelMode/TravelMode";
 import Banner from "./banner/Banner";
 
 const Home = () => {
@@ -38,6 +40,16 @@ const Home = () => {
       {/* tour */}
       <div className="w-[90%] mx-auto px-2">
         <Tour />
+      </div>
+
+      {/* travel mode */}
+      <div className="w-[90%] mx-auto py-2 mt-44">
+        <TravelMode />
+      </div>
+
+      {/* download app */}
+      <div className="w-[90%] mx-auto py-2 mt-44 ">
+        <TourApp />
       </div>
     </>
   );
