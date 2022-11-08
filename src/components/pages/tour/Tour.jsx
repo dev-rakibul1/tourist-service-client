@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Tour = () => {
   const [tour, setTour] = useState([]);
   useEffect(() => {
-    fetch("data.json")
+    fetch("http://localhost:5000/services")
       .then((res) => res.json())
       .then((data) => setTour(data))
       .catch((err) => console.log(err));
@@ -13,10 +14,10 @@ const Tour = () => {
   return (
     <div className="mt-72  min-h-screen ">
       <h3 className="text-center py-7 text-2xl">Choice your service</h3>
-      <div className="grid grid-cols-3 gap-6">
+      <div className="grid sm:grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-6">
         {tour.map((myTour) => (
-          <>
-            <div className="card card-compact w-96 bg-base-100 shadow-xl">
+          <div key={myTour._id}>
+            <div className="card card-compact bg-base-100 shadow-xl">
               <figure>
                 <img src={myTour.images} alt="tour" />
               </figure>
@@ -36,15 +37,17 @@ const Tour = () => {
                 </div>
               </div>
             </div>
-          </>
+          </div>
         ))}
       </div>
 
       {/* see all btn */}
-      <div className="text-center py-7">
-        <button className="bg-pink-600 rounded-full py-2 px-6 inline w-32 text-white">
-          See All
-        </button>
+      <div className="text-center py-16">
+        <Link to={`/serviceDetails/:id`}>
+          <button className="bg-pink-600 rounded-full py-2 px-6 inline w-32 text-white">
+            See All
+          </button>
+        </Link>
       </div>
     </div>
   );
