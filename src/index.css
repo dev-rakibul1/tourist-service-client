@@ -43,3 +43,7 @@ code {
   background-position: center center;
   border-radius: 10px;
 }
+
+li {
+  list-style-type: none;
+}

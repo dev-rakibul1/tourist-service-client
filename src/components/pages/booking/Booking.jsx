@@ -3,6 +3,7 @@ import { toast } from "react-hot-toast";
 
 const Booking = () => {
   const [userMess, setUserMess] = useState("");
+  //   const { images, title, description, area, rating, charge } = data;
 
   //   const data = useLoaderData();
   //   console.log(data);
@@ -65,6 +66,11 @@ const Booking = () => {
       address: address,
       number: number,
       message: message,
+      //   title: title,
+      //   images: images,
+      //   area: area,
+      //   rating: rating,
+      //   charge: charge,
     };
 
     fetch("http://localhost:5000/booking", {

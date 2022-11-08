@@ -13,6 +13,17 @@ const Header = () => {
     </>
   );
 
+  const userLoginInfo = (
+    <>
+      <li>
+        <Link to="/register">Register</Link>
+      </li>
+      <li>
+        <Link to="/login">Login</Link>
+      </li>
+    </>
+  );
+
   return (
     <div className=" bg-pink-100">
       <div className=" w-[90%] navbar mx-auto">
@@ -51,7 +62,7 @@ const Header = () => {
           <ul className="menu menu-horizontal p-0">{navItems}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Get started</a>
+          <ul className="menu menu-horizontal p-0"> {userLoginInfo}</ul>
         </div>
       </div>
     </div>
