@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { toast } from "react-hot-toast";
 
 const Booking = () => {
   const [bookData, setBookData] = useState([]);
@@ -22,12 +23,14 @@ const Booking = () => {
     const email = form.email.value;
     const address = form.address.value;
     const number = form.number.value;
+    const message = form.message.value;
 
     const bookingUser = {
       name: name,
       email: email,
       address: address,
       number: number,
+      message: message,
     };
 
     fetch("http://localhost:5000/booking", {
@@ -38,13 +41,20 @@ const Booking = () => {
       body: JSON.stringify(bookingUser),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        if (data.success) {
+          toast.success(data.message);
+        } else {
+          toast.error(data.error);
+        }
+      })
       .catch((err) => console.log(err));
+    form.reset();
   };
 
   return (
     <div className="w-[90%] mx-auto mt-24">
-      <form>
+      <form onSubmit={handleBookForm}>
         <div className="grid grid-cols-2 gap-11">
           {/* name */}
           <div>
@@ -87,6 +97,7 @@ const Booking = () => {
         <textarea
           className="textarea textarea-primary w-full mt-8 h-48"
           placeholder="Type your message..."
+          name="message"
         ></textarea>
         <button className="btn btn-active btn-primary w-full mt-4 rounded-full">
           Confirm book
