@@ -22,9 +22,13 @@ const Header = () => {
       {user?.email && user?.uid ? (
         <>
           <li>
-            <Link to="/profile">
+            <Link to="/profile" title="profile">
               {user?.photoURL ? (
-                <img src={user?.photoURL} alt="" />
+                <img
+                  src={user?.photoURL}
+                  alt="user"
+                  className="w-9 rounded-full"
+                />
               ) : (
                 <FaUserCircle className="text-2xl" />
               )}

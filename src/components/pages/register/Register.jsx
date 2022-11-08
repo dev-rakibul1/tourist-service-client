@@ -6,7 +6,8 @@ import registerImg from "../../../asset/register.jpg";
 import { AuthContext } from "./../../context/ContextProvider";
 
 const Register = () => {
-  const { user, userEmailPasswordLogin } = useContext(AuthContext);
+  const { user, userEmailPasswordLogin, googleLoginSystem } =
+    useContext(AuthContext);
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -32,6 +33,16 @@ const Register = () => {
     userEmailPasswordLogin(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // google sign method
+  const handleGoogleLoginSystem = () => {
+    googleLoginSystem()
+      .then((result) => {
+        const user = result.user;
         console.log(user);
       })
       .catch((err) => console.log(err));
@@ -93,7 +104,8 @@ const Register = () => {
                   Register
                 </button>
               </div>
-
+            </form>
+            <div>
               <p className="text-center mt-4">
                 Already have an account?{" "}
                 <Link className="text-pink-600 mt-4" to="/login">
@@ -103,12 +115,15 @@ const Register = () => {
 
               <h2 className="or text-center">Or</h2>
               <div className="text-center cursor-pointe  flex items-center justify-center">
-                <button className=" border rounded-full w-6/12  flex items-center justify-center p-2 border-pink-600">
+                <button
+                  className=" border rounded-full w-6/12  flex items-center justify-center p-2 border-pink-600"
+                  onClick={handleGoogleLoginSystem}
+                >
                   <FaGoogle className="text-pink-600" />{" "}
                   <span className="ml-4">Google</span>
                 </button>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
