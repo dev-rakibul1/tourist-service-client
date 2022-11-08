@@ -3,6 +3,7 @@ import Root from "../layout/Root";
 import Blog from "./../pages/blog/Blog";
 import Booking from "./../pages/booking/Booking";
 import Home from "./../pages/home/Home";
+import Login from "./../pages/login/Login";
 import PagesDetails from "./../pages/pagesDetails/PagesDetails";
 import SingleDetailsServices from "./../pages/pagesDetails/SingleDetailsServices";
 import Register from "./../pages/register/Register";
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/booking/:id",
         element: <Booking />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
       {
         path: "/register",

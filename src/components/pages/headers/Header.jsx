@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logo from "../../../asset/tour_logo.png";
+import { AuthContext } from "./../../context/ContextProvider";
+
 const Header = () => {
+  const { user } = useContext(AuthContext);
   const navItems = (
     <>
       <li>
@@ -15,12 +19,28 @@ const Header = () => {
 
   const userLoginInfo = (
     <>
-      <li>
-        <Link to="/register">Register</Link>
-      </li>
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
+      {user?.email && user?.uid ? (
+        <>
+          <li>
+            <Link to="/profile">
+              {user?.photoURL ? (
+                <img src={user?.photoURL} alt="" />
+              ) : (
+                <FaUserCircle className="text-2xl" />
+              )}
+            </Link>
+          </li>
+        </>
+      ) : (
+        <>
+          <li>
+            <Link to="/register">Register</Link>
+          </li>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+        </>
+      )}
     </>
   );
 

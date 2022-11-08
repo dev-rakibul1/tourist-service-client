@@ -1,38 +1,86 @@
-import React from "react";
+import React, { useContext } from "react";
+import { toast } from "react-hot-toast";
+import { FaGoogle } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import registerImg from "../../../asset/register.jpg";
+import { AuthContext } from "./../../context/ContextProvider";
 
 const Register = () => {
+  const { user, userEmailPasswordLogin } = useContext(AuthContext);
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    if (name === "" && name.length < 8) {
+      toast.error("Name require and must be less then 8 charter.");
+      return;
+    }
+    const email = form.email.value;
+    const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!email.match(re)) {
+      toast.error("Please provide a valid email");
+    }
+    const password = form.password.value;
+    if (password.length < 6) {
+      toast.error("Password less then must be 6 charter");
+    }
+    handleEmailPassLoginSystem(email, password);
+  };
+
+  // handle user email password login system
+  const handleEmailPassLoginSystem = (email, password) => {
+    userEmailPasswordLogin(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
+      <div className=" min-h-screen w-[90%] mx-auto">
+        <div className="hero-content flex-col md:flex-row">
+          <div className="text-center lg:text-left w-[50%]">
+            <img src={registerImg} alt="" />
           </div>
-          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <div className="card-body">
+          <div className="card flex-shrink-0 w-[50%]">
+            <form className="card-body" onSubmit={handleRegister}>
+              {/* name */}
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Name"
+                  className="input input-bordered"
+                  name="name"
+                />
+              </div>
+              {/* email */}
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                  type="text"
-                  placeholder="email"
+                  type="email"
+                  placeholder="Email"
                   className="input input-bordered"
+                  name="email"
                 />
               </div>
+
+              {/* password */}
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="text"
+                  type="password"
                   placeholder="password"
                   className="input input-bordered"
+                  name="password"
                 />
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">
@@ -41,9 +89,26 @@ const Register = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn btn-primary rounded-full">
+                  Register
+                </button>
               </div>
-            </div>
+
+              <p className="text-center mt-4">
+                Already have an account?{" "}
+                <Link className="text-pink-600 mt-4" to="/login">
+                  Login
+                </Link>
+              </p>
+
+              <h2 className="or text-center">Or</h2>
+              <div className="text-center cursor-pointe  flex items-center justify-center">
+                <button className=" border rounded-full w-6/12  flex items-center justify-center p-2 border-pink-600">
+                  <FaGoogle className="text-pink-600" />{" "}
+                  <span className="ml-4">Google</span>
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
