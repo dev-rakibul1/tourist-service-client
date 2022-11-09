@@ -2,9 +2,11 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import { Link, useLoaderData } from "react-router-dom";
+import UseTitle from "./../../useTitle/UseTitle";
 
 const PagesDetails = () => {
   const services = useLoaderData();
+  UseTitle("Service");
 
   return (
     <PhotoProvider>

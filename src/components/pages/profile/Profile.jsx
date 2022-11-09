@@ -4,8 +4,10 @@ import { FaRegArrowAltCircleDown, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import userImg from "../../../asset/user.png";
 import { AuthContext } from "./../../context/ContextProvider";
+import UseTitle from "./../../useTitle/UseTitle";
 
 const Profile = () => {
+  UseTitle("Profile");
   const [newService, setNewService] = useState([]);
   const [userRating, setUserRating] = useState([]);
   const [bookingInfo, setBookingInfo] = useState([]);

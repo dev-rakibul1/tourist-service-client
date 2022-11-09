@@ -4,8 +4,10 @@ import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import registerImg from "../../../asset/login.jpg";
 import { AuthContext } from "./../../context/ContextProvider";
+import UseTitle from "./../../useTitle/UseTitle";
 
 const Login = () => {
+  UseTitle("Login");
   const { signEmailAndPass, googleLoginSystem } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();

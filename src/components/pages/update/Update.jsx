@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { Navigate, useLoaderData } from "react-router-dom";
+import UseTitle from "./../../useTitle/UseTitle";
 
 const Update = () => {
   const storedData = useLoaderData();
   const [updateUser, setUpdateUser] = useState(storedData);
+  UseTitle("Update");
 
   const onUpdateHandler = (event) => {
     event.preventDefault();

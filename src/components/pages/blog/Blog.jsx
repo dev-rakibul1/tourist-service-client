@@ -1,7 +1,9 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import UseTitle from "./../../useTitle/UseTitle";
 
 const Blog = () => {
+  UseTitle("Blog");
   const blogData = useLoaderData();
   console.log(blogData);
 

@@ -1,7 +1,9 @@
 import React from "react";
 import { toast } from "react-hot-toast";
+import UseTitle from "./../../useTitle/UseTitle";
 
 const AddServices = () => {
+  UseTitle("Add service");
   const onServiceHandler = (event) => {
     event.preventDefault();
 

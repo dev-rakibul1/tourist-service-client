@@ -5,9 +5,11 @@ import AddServices from "../addService/AddServices";
 import Tour from "../tour/Tour";
 import TourApp from "../tourApp/TourApp";
 import TravelMode from "../travelMode/TravelMode";
+import UseTitle from "./../../useTitle/UseTitle";
 import Banner from "./banner/Banner";
 
 const Home = () => {
+  UseTitle("Home");
   return (
     <>
       <PhotoProvider>

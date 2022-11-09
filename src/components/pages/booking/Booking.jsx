@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "./../../context/ContextProvider";
+import UseTitle from "./../../useTitle/UseTitle";
 
 const Booking = () => {
+  UseTitle("Booking");
   const [userMess, setUserMess] = useState("");
   const { user } = useContext(AuthContext);
   //   const { images, title, description, area, rating, charge } = data;

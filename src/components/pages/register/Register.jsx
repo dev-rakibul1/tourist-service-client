@@ -4,8 +4,10 @@ import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import registerImg from "../../../asset/register.jpg";
 import { AuthContext } from "./../../context/ContextProvider";
+import UseTitle from "./../../useTitle/UseTitle";
 
 const Register = () => {
+  UseTitle("Register");
   const { user, userEmailPasswordLogin, googleLoginSystem, updateUserProfile } =
     useContext(AuthContext);
 

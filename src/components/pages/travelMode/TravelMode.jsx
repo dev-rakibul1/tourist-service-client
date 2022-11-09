@@ -1,7 +1,9 @@
 import React from "react";
 import imagesTour from "../../../asset/enjoy.jpg";
+import UseTitle from "./../../useTitle/UseTitle";
 
 const TravelMode = () => {
+  UseTitle("Travel mode");
   return (
     <div>
       <div className=" ">
