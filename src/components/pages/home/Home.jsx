@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import AddServices from "../addService/AddServices";
 import Tour from "../tour/Tour";
 import TourApp from "../tourApp/TourApp";
 import TravelMode from "../travelMode/TravelMode";
@@ -48,6 +49,11 @@ const Home = () => {
       {/* travel mode */}
       <div className="w-[90%] mx-auto py-2 mt-32">
         <TravelMode />
+      </div>
+
+      {/* Add service */}
+      <div className="w-[90%] mx-auto py-2 mt-32">
+        <AddServices />
       </div>
 
       {/* download app */}

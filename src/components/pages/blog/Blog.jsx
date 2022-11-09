@@ -10,7 +10,7 @@ const Blog = () => {
       <h1 className="text-center text-pink-600 font-bold text-3xl py-7">
         Blog
       </h1>
-      <div className="md:w-[50%] mx-auto">
+      <div className="md:w-[50%] mx-auto px-2">
         {blogData.map((data) => (
           <div
             tabIndex={0}
