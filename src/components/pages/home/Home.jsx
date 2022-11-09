@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Tour from "../tour/Tour";
 import TourApp from "../tourApp/TourApp";
 import TravelMode from "../travelMode/TravelMode";
@@ -25,9 +26,11 @@ const Home = () => {
                   is very popular in the world and most of the people like it.
                   There are have any type of comfort tools for enjoy the people.
                 </p>
-                <button className="btn btn-active btn-primary rounded-full px-9">
-                  Get Started
-                </button>
+                <Link to="/serviceDetails/:id">
+                  <button className="btn btn-active btn-primary rounded-full px-9">
+                    Get Started
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

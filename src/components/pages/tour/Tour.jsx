@@ -26,13 +26,13 @@ const Tour = () => {
 
                 <div className="flex items-center justify-between">
                   <div className="flex items-center text-lg">
-                    <span>{myTour.rating}</span>{" "}
+                    Rating - <span> {myTour.rating}</span>{" "}
                     <FaStar className="inline text-green-800" />
                   </div>
                   <div>
-                    <button className="bg-pink-600 rounded-full py-2 px-6 inline w-32 text-white">
-                      See details
-                    </button>
+                    <p>
+                      <strong>Visiting fee ${myTour.charge}</strong>
+                    </p>
                   </div>
                 </div>
               </div>
