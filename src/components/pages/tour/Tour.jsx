@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
+import { PhotoView } from "react-photo-view";
 import { Link } from "react-router-dom";
 
 const Tour = () => {
@@ -19,7 +20,9 @@ const Tour = () => {
           <div key={myTour._id}>
             <div className="card card-compact bg-base-100 shadow-xl">
               <figure>
-                <img src={myTour.images} alt="tour" />
+                <PhotoView src={myTour.images}>
+                  <img src={myTour.images} alt="tour" />
+                </PhotoView>
               </figure>
               <div className="card-body">
                 <h2 className="card-title">{myTour.title}</h2>

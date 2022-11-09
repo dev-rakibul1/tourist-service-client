@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Toaster } from "react-hot-toast";
+import "react-photo-view/dist/react-photo-view.css";
 import App from "./App";
 import ContextProvider from "./components/context/ContextProvider";
 import "./index.css";
