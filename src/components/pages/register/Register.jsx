@@ -1,13 +1,18 @@
 import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import registerImg from "../../../asset/register.jpg";
 import { AuthContext } from "./../../context/ContextProvider";
 
 const Register = () => {
-  const { user, userEmailPasswordLogin, googleLoginSystem, updateUserProfile } =
+  const { user, userEmailPasswordLogin, googleLoginSystem } =
     useContext(AuthContext);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+
   const handleRegister = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -35,8 +40,13 @@ const Register = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
+        toast.success("Login is success!");
+        navigate(from, { replace: true });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        toast.error(err.message);
+        console.log(err);
+      });
   };
 
   // google sign method
@@ -45,8 +55,13 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        toast.success("Login is success!");
+        navigate(from, { replace: true });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.message);
+      });
   };
 
   // update profile

@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import PrivateRouter from "../context/PrivateRouter";
 import Root from "../layout/Root";
 import Error from "../pages/error/Error";
 import Blog from "./../pages/blog/Blog";
@@ -17,7 +18,10 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/blog", element: <Blog /> },
+      {
+        path: "/blog",
+        element: <Blog />,
+      },
       {
         path: "/serviceDetails/:id",
         element: <PagesDetails />,
@@ -25,7 +29,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/tourist-all-services/:id",
-        element: <SingleDetailsServices />,
+        element: (
+          <PrivateRouter>
+            <SingleDetailsServices />
+          </PrivateRouter>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/tourist-all-services/${params.id}`),
       },

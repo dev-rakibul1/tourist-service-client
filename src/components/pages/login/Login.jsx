@@ -1,12 +1,16 @@
 import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import registerImg from "../../../asset/login.jpg";
 import { AuthContext } from "./../../context/ContextProvider";
 
 const Login = () => {
   const { signEmailAndPass, googleLoginSystem } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+
   const handleUserLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -29,8 +33,13 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        toast.success("Login is success!");
+        navigate(from, { replace: true });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        toast.error(err.message);
+      });
   };
 
   // google sign method
@@ -39,6 +48,8 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        toast.success("Login is success!");
+        navigate(from, { replace: true });
       })
       .catch((err) => console.log(err));
   };
