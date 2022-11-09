@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
-import { FaStar, FaTimes, FaUser } from "react-icons/fa";
+import { FaStar, FaTimes } from "react-icons/fa";
 import { Link, useLoaderData } from "react-router-dom";
+import userImg from "../../../asset/user.png";
+import { AuthContext } from "./../../context/ContextProvider";
 
 const SingleDetailsServices = () => {
   const { images, title, description, area, rating, charge } = useLoaderData();
   const [userRating, setUserRating] = useState([]);
+  const { user } = useContext(AuthContext);
 
   const handleUserReview = (event) => {
     event.preventDefault();
@@ -78,8 +81,8 @@ const SingleDetailsServices = () => {
   }, []);
 
   return (
-    <div className="md:flex gap-11 mt-16">
-      <div className="w-[60%] px-3">
+    <div className="md:flex gap-4 mt-16">
+      <div className="md:w-[60%] px-3">
         <div className="card bg-base-100 shadow-xl">
           <figure>
             <img src={images} alt="Shoes" />
@@ -153,7 +156,7 @@ const SingleDetailsServices = () => {
           </div>
         </div>
       </div>
-      <div className="w-[40%] px-3">
+      <div className="md:w-[40%] px-3">
         <article>
           <h2 className="text-2xl booking-title mt-4">
             Booking your favourite place
@@ -183,6 +186,7 @@ const SingleDetailsServices = () => {
               <th>Place name</th>
               <th>Place images</th>
               <th>User</th>
+              <th>User name</th>
               <th>User meg</th>
               <th>Rating</th>
               <th>Delete</th>
@@ -198,7 +202,25 @@ const SingleDetailsServices = () => {
                   />
                 </td>
                 <td>
-                  <FaUser />
+                  <div className="text-center flex justify-center">
+                    {user?.photoURL ? (
+                      <img
+                        src={user?.photoURL}
+                        alt="user"
+                        className="rounded-full w-16"
+                      />
+                    ) : (
+                      <img
+                        src={userImg}
+                        alt="user"
+                        className="rounded-full w-16"
+                      />
+                    )}
+                  </div>
+                </td>
+                <td>
+                  {" "}
+                  {user?.displayName ? user?.displayName : "Name not found"}
                 </td>
                 <td>{rating.message.slice(0, 30)}</td>
                 <td>{rating.rating} Star</td>

@@ -10,6 +10,7 @@ import PagesDetails from "./../pages/pagesDetails/PagesDetails";
 import SingleDetailsServices from "./../pages/pagesDetails/SingleDetailsServices";
 import Profile from "./../pages/profile/Profile";
 import Register from "./../pages/register/Register";
+import Update from "./../pages/update/Update";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,12 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/update/:id",
+        element: <Update />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/update/${params.id}`),
       },
       {
         path: "/profile",

@@ -39,10 +39,27 @@ const ContextProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  //   update profile
+  // update profile
   // const updateUserProfile = (profile) => {
   //   setLoading(true);
-  //   updateProfile(auth.currentUser, profile);
+  //   updateProfile(auth.currentUser, {
+  //     displayName: "profile" + profile,
+  //   })
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log(err));
+  //   console.log("Our update profile name is: ", profile);
+  // };
+
+  // const onUpdateProfile = (name) => {
+  //   console.log(name);
+  //   updateProfile(auth.currentUser, {
+  //     displayName: name,
+  //   })
+  //     .then((result) => {
+  //       const user = result.user;
+  //       console.log(user);
+  //     })
+  //     .then((err) => console.log(err));
   // };
 
   // catch user
@@ -64,6 +81,7 @@ const ContextProvider = ({ children }) => {
     signEmailAndPass,
     // updateUserProfile,
     loading,
+    // onUpdateProfile,
   };
   return (
     <div>

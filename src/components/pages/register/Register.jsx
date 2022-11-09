@@ -6,7 +6,7 @@ import registerImg from "../../../asset/register.jpg";
 import { AuthContext } from "./../../context/ContextProvider";
 
 const Register = () => {
-  const { user, userEmailPasswordLogin, googleLoginSystem } =
+  const { user, userEmailPasswordLogin, googleLoginSystem, updateUserProfile } =
     useContext(AuthContext);
 
   const location = useLocation();

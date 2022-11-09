@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { toast } from "react-hot-toast";
+import { AuthContext } from "./../../context/ContextProvider";
 
 const Booking = () => {
   const [userMess, setUserMess] = useState("");
+  const { user } = useContext(AuthContext);
   //   const { images, title, description, area, rating, charge } = data;
 
   //   const data = useLoaderData();
@@ -103,6 +105,7 @@ const Booking = () => {
               placeholder="Name"
               className="input input-bordered input-primary w-full"
               name="name"
+              defaultValue={user.displayName}
             />
           </div>
           {/* email */}
@@ -112,6 +115,8 @@ const Booking = () => {
               placeholder="Email"
               className="input input-bordered input-primary w-full"
               name="email"
+              defaultValue={user.email}
+              readOnly
             />
           </div>
           {/* address */}
