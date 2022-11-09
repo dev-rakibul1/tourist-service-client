@@ -6,7 +6,7 @@ import registerImg from "../../../asset/register.jpg";
 import { AuthContext } from "./../../context/ContextProvider";
 
 const Register = () => {
-  const { user, userEmailPasswordLogin, googleLoginSystem } =
+  const { user, userEmailPasswordLogin, googleLoginSystem, updateUserProfile } =
     useContext(AuthContext);
   const handleRegister = (event) => {
     event.preventDefault();
@@ -26,6 +26,7 @@ const Register = () => {
       toast.error("Password less then must be 6 charter");
     }
     handleEmailPassLoginSystem(email, password);
+    // handleUpdateProfile(name);
   };
 
   // handle user email password login system
@@ -47,6 +48,14 @@ const Register = () => {
       })
       .catch((err) => console.log(err));
   };
+
+  // update profile
+  // const handleUpdateProfile = (name) => {
+  //   const profile = {
+  //     displayName: name,
+  //   };
+  //   updateUserProfile(profile);
+  // };
 
   return (
     <div>

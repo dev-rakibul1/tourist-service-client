@@ -1,9 +1,48 @@
-import React from "react";
+import React, { useContext } from "react";
+import { toast } from "react-hot-toast";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import registerImg from "../../../asset/login.jpg";
+import { AuthContext } from "./../../context/ContextProvider";
 
 const Login = () => {
+  const { signEmailAndPass, googleLoginSystem } = useContext(AuthContext);
+  const handleUserLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const password = form.password.value;
+    const email = form.email.value;
+
+    const re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!email.match(re)) {
+      toast.error("Please provide a valid email");
+    }
+    if (password.length < 6) {
+      toast.error("Password less then must be 6 charter");
+    }
+    userEmailPassSign(email, password);
+  };
+
+  // user email password login system
+  const userEmailPassSign = (email, password) => {
+    signEmailAndPass(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  // google sign method
+  const handleGoogleLoginSystem = () => {
+    googleLoginSystem()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div>
       <div className=" min-h-screen w-[90%] mx-auto">
@@ -12,7 +51,7 @@ const Login = () => {
             <img src={registerImg} alt="" />
           </div>
           <div className="card flex-shrink-0 w-[50%]">
-            <div className="card-body">
+            <form className="card-body" onSubmit={handleUserLogin}>
               {/* email */}
               <div className="form-control">
                 <label className="label">
@@ -56,12 +95,15 @@ const Login = () => {
 
               <h2 className="or text-center">Or</h2>
               <div className="text-center cursor-pointe  flex items-center justify-center">
-                <button className=" border rounded-full w-6/12  flex items-center justify-center p-2 border-pink-600">
+                <button
+                  className=" border rounded-full w-6/12  flex items-center justify-center p-2 border-pink-600"
+                  onClick={handleGoogleLoginSystem}
+                >
                   <FaGoogle className="text-pink-600" />{" "}
                   <span className="ml-4">Google</span>
                 </button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
