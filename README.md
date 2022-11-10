@@ -1,12 +1,18 @@
-
 # Project name: Tourist
+
 ## project url: [Live preview](https://dragon-news-be5cc.web.app/)
+
 ## Author : Rakibul Islam
 
 ## Project description:
+
 This is a tourist website. The website build for purpose for tour the most popular place in the world and the visitor that to be enjoy her life with us. There are use technology Reactjs, Nodejs, Expressjs, mongoDB, google firebase for login. The website very interesting and every pixel perfectly design and fully responsive for (Mobile, tablet, desktop). There are your here TailWind css and daisyui tailwind plugin.
 
-
+- React.js
+- Node.js
+- Express.js
+- mongoDB
+- Google firebase for login access
 
 # Getting Started with Create React App
 
@@ -78,4 +84,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
 #
