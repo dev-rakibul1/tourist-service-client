@@ -31,7 +31,7 @@ const SingleDetailsServices = () => {
       title: title,
     };
 
-    fetch("http://localhost:5000/userRating", {
+    fetch("https://tourist-service-server.vercel.app/userRating", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -55,7 +55,7 @@ const SingleDetailsServices = () => {
     // console.log(id);
 
     if (agree) {
-      fetch(`http://localhost:5000/userRating/${id}`, {
+      fetch(`https://tourist-service-server.vercel.app/userRating/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -76,16 +76,24 @@ const SingleDetailsServices = () => {
 
   // user rating
   useEffect(() => {
-    fetch("http://localhost:5000/userRating")
+    fetch("https://tourist-service-server.vercel.app/userRating")
       .then((res) => res.json())
       .then((data) => setUserRating(data))
       .then((err) => console.log(err));
   }, []);
 
+  console.log(userRating);
+
   // update rating info
   const handleUpdateRating = (id) => {
     console.log(id);
   };
+
+  if (userRating.length < 1) {
+    console.log("data not abilable");
+  } else {
+    console.log("data abilable");
+  }
 
   return (
     <div className="md:flex gap-4 mt-16">
@@ -189,72 +197,82 @@ const SingleDetailsServices = () => {
         {/* user rating */}
         <div className="mt-7">
           {/* user review  */}
-          <h3 className="py-4 text-2xl text-center">User reviews</h3>
-          <table>
-            <tr>
-              <th>Place name</th>
-              <th>user email</th>
-              <th>User</th>
-              <th>User name</th>
-              <th>User meg</th>
-              <th>Rating</th>
-              <th>Delete</th>
-              <th>Update </th>
-            </tr>
-            {userRating.map((rating) => (
-              <tr>
-                <td>{rating?.title}</td>
-                <td>
-                  {/* <img
+
+          {userRating.length ? (
+            <>
+              <h3 className="py-4 text-2xl text-center">User reviews</h3>
+              <table>
+                <tr>
+                  <th>Place name</th>
+                  <th>user email</th>
+                  <th>User</th>
+                  <th>User name</th>
+                  <th>User meg</th>
+                  <th>Rating</th>
+                  <th>Delete</th>
+                  <th>Update </th>
+                </tr>
+
+                {userRating.map((rating) => (
+                  <tr>
+                    <td>{rating?.title}</td>
+                    <td>
+                      {/* <img
                     src={rating?.images}
                     alt="rating images"
                     className="w-9"
                   /> */}
-                  {user?.email}
-                </td>
-                <td>
-                  <div className="text-center flex justify-center">
-                    {user?.photoURL ? (
-                      <img
-                        src={user?.photoURL}
-                        alt="user"
-                        className="rounded-full w-16"
-                      />
-                    ) : (
-                      <img
-                        src={userImg}
-                        alt="user"
-                        className="rounded-full w-16"
-                      />
-                    )}
-                  </div>
-                </td>
-                <td>
-                  {" "}
-                  {user?.displayName ? user?.displayName : "Name not found"}
-                </td>
-                <td>{rating.message.slice(0, 30)}</td>
-                <td>{rating.rating} Star</td>
-                <td
-                  className="cursor-pointer"
-                  onClick={() => handleDeleteRating(rating._id)}
-                >
-                  <FaTimes />
-                </td>
-                <Link
-                  className="flex items-center justify-center mt-7 border-none w-full h-full"
-                  to={`/updateRating/${rating._id}`}
-                >
-                  <td
-                    className="cursor-pointer border-none w-full h-full"
-                    onClick={() => handleUpdateRating(rating._id)}
-                  >
-                    <FaDownload />
-                  </td>
-                </Link>
-              </tr>
-            ))}
-          </table>
+                      {user?.email}
+                    </td>
+                    <td>
+                      <div className="text-center flex justify-center">
+                        {user?.photoURL ? (
+                          <img
+                            src={user?.photoURL}
+                            alt="user"
+                            className="rounded-full w-16"
+                          />
+                        ) : (
+                          <img
+                            src={userImg}
+                            alt="user"
+                            className="rounded-full w-16"
+                          />
+                        )}
+                      </div>
+                    </td>
+                    <td>
+                      {" "}
+                      {user?.displayName ? user?.displayName : "Name not found"}
+                    </td>
+                    <td>{rating.message.slice(0, 30)}</td>
+                    <td>{rating.rating} Star</td>
+                    <td
+                      className="cursor-pointer"
+                      onClick={() => handleDeleteRating(rating._id)}
+                    >
+                      <FaTimes />
+                    </td>
+                    <Link
+                      className="flex items-center justify-center mt-7 border-none w-full h-full"
+                      to={`/updateRating/${rating._id}`}
+                    >
+                      <td
+                        className="cursor-pointer border-none w-full h-full"
+                        onClick={() => handleUpdateRating(rating._id)}
+                      >
+                        <FaDownload />
+                      </td>
+                    </Link>
+                  </tr>
+                ))}
+              </table>
+            </>
+          ) : (
+            <h1 className="text-center text-2xl text-gray-400  mt-11">
+              Reviews not available
+            </h1>
+          )}
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:5000/newServices")
+    fetch("https://tourist-service-server.vercel.app/newServices")
       .then((res) => res.json())
       .then((data) => setNewService(data))
       .catch((err) => console.log(err));
@@ -27,7 +27,7 @@ const Profile = () => {
 
   // rating info
   useEffect(() => {
-    fetch("http://localhost:5000/userRating")
+    fetch("https://tourist-service-server.vercel.app/userRating")
       .then((res) => res.json())
       .then((data) => setUserRating(data))
       .catch((err) => console.log(err));
@@ -35,7 +35,7 @@ const Profile = () => {
 
   // Booking info
   useEffect(() => {
-    fetch("http://localhost:5000/bookingInfo")
+    fetch("https://tourist-service-server.vercel.app/bookingInfo")
       .then((res) => res.json())
       .then((data) => setBookingInfo(data))
       .catch((err) => console.log(err));
@@ -45,7 +45,7 @@ const Profile = () => {
   const handleDelete = (id) => {
     const agree = window.confirm("Are your sure delete this user?");
     if (agree) {
-      fetch(`http://localhost:5000/newServices/${id}`, {
+      fetch(`https://tourist-service-server.vercel.app/newServices/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -70,7 +70,7 @@ const Profile = () => {
     // console.log(id);
 
     if (agree) {
-      fetch(`http://localhost:5000/userRating/${id}`, {
+      fetch(`https://tourist-service-server.vercel.app/userRating/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -95,7 +95,7 @@ const Profile = () => {
     console.log(id);
 
     if (agree) {
-      fetch(`http://localhost:5000/bookingInfo/${id}`, {
+      fetch(`https://tourist-service-server.vercel.app/bookingInfo/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -117,129 +117,157 @@ const Profile = () => {
   return (
     <div className="w-[90%] mx-auto px-2 flex gap-6 mt-7">
       <div className="w-[75%] mx-auto">
-        <h2 className="text-center text-2xl py-4">Your added services</h2>
-        <table>
-          <tr>
-            <th>Delete</th>
-            <th>images</th>
-            <th>Title</th>
-            <th>Visiting fee</th>
-            <th>Area</th>
-            <th>rating</th>
-            <th>Update</th>
-          </tr>
-          {newService.map((data) => (
-            <tr>
-              <th
-                className="text-center cursor-pointer"
-                onClick={() => handleDelete(data._id)}
-              >
-                <FaTimes />
-              </th>
-              <td>
-                <img src={data?.img} alt="" className="w-16 rounded-sm" />
-              </td>
-              <td>{data?.sTitle}</td>
-              <td>{data?.charge}$</td>
-              <td>{data?.area}</td>
-              <td>{data?.rating} Star</td>
-              <Link
-                className="w-full text-center flex items-center justify-center h-full "
-                to={`/update/${data?._id}`}
-              >
-                <td className="text-center cursor-pointer border-none mt-4">
-                  <FaRegArrowAltCircleDown className="text-center text-xl" />
-                </td>
-              </Link>
-            </tr>
-          ))}
-        </table>
+        {newService.length ? (
+          <>
+            {" "}
+            <h2 className="text-center text-2xl py-4">Your added services</h2>
+            <table>
+              <tr>
+                <th>Delete</th>
+                <th>images</th>
+                <th>Title</th>
+                <th>Visiting fee</th>
+                <th>Area</th>
+                <th>rating</th>
+                <th>Update</th>
+              </tr>
+              {newService.map((data) => (
+                <tr>
+                  <th
+                    className="text-center cursor-pointer"
+                    onClick={() => handleDelete(data._id)}
+                  >
+                    <FaTimes />
+                  </th>
+                  <td>
+                    <img src={data?.img} alt="" className="w-16 rounded-sm" />
+                  </td>
+                  <td>{data?.sTitle}</td>
+                  <td>{data?.charge}$</td>
+                  <td>{data?.area}</td>
+                  <td>{data?.rating} Star</td>
+                  <Link
+                    className="w-full text-center flex items-center justify-center h-full "
+                    to={`/update/${data?._id}`}
+                  >
+                    <td className="text-center cursor-pointer border-none mt-4">
+                      <FaRegArrowAltCircleDown className="text-center text-xl" />
+                    </td>
+                  </Link>
+                </tr>
+              ))}
+            </table>
+          </>
+        ) : (
+          <h1 className="text-center text-2xl text-gray-400  mt-11">
+            User new service not available
+          </h1>
+        )}
 
         {/* user rating info */}
-        <h2 className="text-center text-2xl py-4 mt-7">Your last reviews</h2>
-        <table>
-          <tr>
-            <th>Place name</th>
-            <th>Place images</th>
-            <th>User</th>
-            <th>User name</th>
-            <th>User meg</th>
-            <th>Rating</th>
-            <th>Delete</th>
-          </tr>
-          {userRating.map((rating) => (
-            <tr>
-              <td>{rating?.title}</td>
-              <td>
-                <img
-                  src={rating?.images}
-                  alt="rating images"
-                  className="w-24"
-                />
-              </td>
-              <td>
-                <div className="text-center flex justify-center">
-                  {user?.photoURL ? (
+        {userRating.length ? (
+          <>
+            <h2 className="text-center text-2xl py-4 mt-7">
+              Your last reviews
+            </h2>
+            <table>
+              <tr>
+                <th>Place name</th>
+                <th>Place images</th>
+                <th>User</th>
+                <th>User name</th>
+                <th>User meg</th>
+                <th>Rating</th>
+                <th>Delete</th>
+              </tr>
+              {userRating.map((rating) => (
+                <tr>
+                  <td>{rating?.title}</td>
+                  <td>
                     <img
-                      src={user?.photoURL}
-                      alt="user"
-                      className="rounded-full w-16"
+                      src={rating?.images}
+                      alt="rating images"
+                      className="w-24"
                     />
-                  ) : (
-                    <img
-                      src={userImg}
-                      alt="user"
-                      className="rounded-full w-16"
-                    />
-                  )}
-                </div>
-              </td>
-              <td>
-                {" "}
-                {user?.displayName ? user?.displayName : "Name not found"}
-              </td>
-              <td>{rating.message.slice(0, 30)}</td>
-              <td>{rating.rating} Star</td>
-              <td
-                className="cursor-pointer"
-                onClick={() => handleDeleteRating(rating._id)}
-              >
-                <FaTimes />
-              </td>
-            </tr>
-          ))}
-        </table>
+                  </td>
+                  <td>
+                    <div className="text-center flex justify-center">
+                      {user?.photoURL ? (
+                        <img
+                          src={user?.photoURL}
+                          alt="user"
+                          className="rounded-full w-16"
+                        />
+                      ) : (
+                        <img
+                          src={userImg}
+                          alt="user"
+                          className="rounded-full w-16"
+                        />
+                      )}
+                    </div>
+                  </td>
+                  <td>
+                    {" "}
+                    {user?.displayName ? user?.displayName : "Name not found"}
+                  </td>
+                  <td>{rating.message.slice(0, 30)}</td>
+                  <td>{rating.rating} Star</td>
+                  <td
+                    className="cursor-pointer"
+                    onClick={() => handleDeleteRating(rating._id)}
+                  >
+                    <FaTimes />
+                  </td>
+                </tr>
+              ))}
+            </table>
+          </>
+        ) : (
+          <h1 className="text-center text-2xl text-gray-400  mt-11">
+            Rating not available
+          </h1>
+        )}
 
         {/* booking info */}
-        <h1 className="text-center text-2xl py-4 mt-7">
-          Your apply information
-        </h1>
-        <table>
-          <tr>
-            <th>Delete</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Address</th>
-            <th>Number</th>
-            <th>Apply status</th>
-          </tr>
 
-          {bookingInfo.map((book) => (
-            <tr>
-              <td
-                className="cursor-pointer"
-                onClick={() => handleBookingInfo(book._id)}
-              >
-                <FaTimes />
-              </td>
-              <td>{book?.name}</td>
-              <td>{book?.email}</td>
-              <td>{book?.address}</td>
-              <td>{book?.number}</td>
-              <td>pending</td>
-            </tr>
-          ))}
-        </table>
+        {bookingInfo.length ? (
+          <>
+            <h1 className="text-center text-2xl py-4 mt-7">
+              Your apply information
+            </h1>
+            <table>
+              <tr>
+                <th>Delete</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Number</th>
+                <th>Apply status</th>
+              </tr>
+
+              {bookingInfo.map((book) => (
+                <tr>
+                  <td
+                    className="cursor-pointer"
+                    onClick={() => handleBookingInfo(book._id)}
+                  >
+                    <FaTimes />
+                  </td>
+                  <td>{book?.name}</td>
+                  <td>{book?.email}</td>
+                  <td>{book?.address}</td>
+                  <td>{book?.number}</td>
+                  <td>pending</td>
+                </tr>
+              ))}
+            </table>
+          </>
+        ) : (
+          <h1 className="text-center text-2xl text-gray-400  mt-11">
+            You no apply for tour.
+          </h1>
+        )}
       </div>
 
       {/* user info */}

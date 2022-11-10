@@ -13,7 +13,7 @@ const Booking = () => {
   //   console.log(data);
 
   //   useEffect(() => {
-  //     fetch("http://localhost:5000/tourist-all-services")
+  //     fetch("https://tourist-service-server.vercel.app/tourist-all-services")
   //       .then((res) => res.json())
   //       .then((data) => setBookData(data))
   //       .catch((err) => console.log(err));
@@ -77,7 +77,7 @@ const Booking = () => {
       //   charge: charge,
     };
 
-    fetch("http://localhost:5000/booking", {
+    fetch("https://tourist-service-server.vercel.app/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",

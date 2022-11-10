@@ -23,12 +23,15 @@ const router = createBrowserRouter([
       {
         path: "/blog",
         element: <Blog />,
-        loader: () => fetch("http://localhost:5000/blog"),
+        loader: () => fetch("https://tourist-service-server.vercel.app/blog"),
       },
       {
         path: "/serviceDetails/:id",
         element: <PagesDetails />,
-        loader: () => fetch("http://localhost:5000/tourist-all-services"),
+        loader: () =>
+          fetch(
+            "https://tourist-service-server.vercel.app/tourist-all-services"
+          ),
       },
       {
         path: "/tourist-all-services/:id",
@@ -38,7 +41,9 @@ const router = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/tourist-all-services/${params.id}`),
+          fetch(
+            `https://tourist-service-server.vercel.app/tourist-all-services/${params.id}`
+          ),
       },
       {
         path: "/booking/:id",
@@ -60,13 +65,17 @@ const router = createBrowserRouter([
         path: "/updateRating/:id",
         element: <UpdateRating />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/userRating/${params.id}`),
+          fetch(
+            `https://tourist-service-server.vercel.app/userRating/${params.id}`
+          ),
       },
       {
         path: "/update/:id",
         element: <Update />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/update/${params.id}`),
+          fetch(
+            `https://tourist-service-server.vercel.app/update/${params.id}`
+          ),
       },
       {
         path: "/profile",

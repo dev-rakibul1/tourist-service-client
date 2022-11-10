@@ -30,13 +30,16 @@ const Update = () => {
     };
     console.log(newUpdateInfo);
 
-    fetch(`http://localhost:5000/update/${storedData._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newUpdateInfo),
-    })
+    fetch(
+      `https://tourist-service-server.vercel.app/update/${storedData._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newUpdateInfo),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {

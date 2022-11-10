@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import UseTitle from "./../../useTitle/UseTitle";
 
 const AddServices = () => {
+  const [err, setErr] = useState("");
   UseTitle("Add service");
   const onServiceHandler = (event) => {
     event.preventDefault();
@@ -16,6 +17,22 @@ const AddServices = () => {
     const message = form.message.value;
     const area = form.area.value;
 
+    // validation form
+    if (sTitle === " " || sTitle.length < 8) {
+      setErr("Title is require and less then 8 charter.");
+      return;
+    }
+
+    if (rating.length === " " || (rating.length < 5 && rating > 0)) {
+      setErr("Rating is require and you need 1-5 charter.");
+      return;
+    }
+
+    if (message === " " || message.length < 20) {
+      setErr("Message is require and less then 20 charter.");
+      return;
+    }
+
     const newServiceInfo = {
       sTitle: sTitle,
       img: img,
@@ -26,7 +43,7 @@ const AddServices = () => {
       area: area,
     };
 
-    fetch("http://localhost:5000/newServices", {
+    fetch("https://tourist-service-server.vercel.app/newServices", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -113,6 +130,7 @@ const AddServices = () => {
           placeholder="Type your message...."
           name="message"
         ></textarea>
+        <h3 className="text-red-600">{err}</h3>
         <input
           type="submit"
           value="Send Service"

@@ -25,13 +25,16 @@ const UpdateRating = () => {
     };
     console.log(updateUserRating);
 
-    fetch(`http://localhost:5000/userRating/${userRating._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updateUserRating),
-    })
+    fetch(
+      `https://tourist-service-server.vercel.app/userRating/${userRating._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updateUserRating),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
