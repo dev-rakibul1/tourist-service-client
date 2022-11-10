@@ -60,10 +60,10 @@ const Login = () => {
     <div>
       <div className=" min-h-screen w-[90%] mx-auto">
         <div className="hero-content flex-col md:flex-row">
-          <div className="text-center lg:text-left w-[50%]">
+          <div className="text-center lg:text-left md:w-[50%] px-2 w-full">
             <img src={registerImg} alt="" />
           </div>
-          <div className="card flex-shrink-0 w-[50%]">
+          <div className="card flex-shrink-0 md:w-[50%] px-2 w-full">
             <form className="card-body" onSubmit={handleUserLogin}>
               {/* email */}
               <div className="form-control">

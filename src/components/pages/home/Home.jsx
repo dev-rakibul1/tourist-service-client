@@ -18,7 +18,7 @@ const Home = () => {
             <div className="hero-content flex-col md:flex-row">
               {/* title part */}
               <div className="text-center lg:text-left md:w-[50%] md:mt-92">
-                <h1 className="text-5xl font-bold hero-title">
+                <h1 className="md:text-5xl md:font-bold hero-title text-3xl">
                   Exploring the <br /> World! A great <br /> choice of tours.
                 </h1>
               </div>
@@ -26,14 +26,14 @@ const Home = () => {
               {/* details */}
               <div className="card flex-shrink-0 max-w-sm w-[50%] md:none">
                 <div className="">
-                  <p className="hero-details">
+                  <p className="hero-details hidden md:block">
                     The most popular place tour in the world. our traveling area
                     is very popular in the world and most of the people like it.
                     There are have any type of comfort tools for enjoy the
                     people.
                   </p>
-                  <Link to="/serviceDetails/:id">
-                    <button className="btn btn-active btn-primary rounded-full px-9">
+                  <Link to="/serviceDetails/:id" className="w-full">
+                    <button className="btn btn-active btn-primary w-full md:mt-7 rounded-full px-9">
                       Get Started
                     </button>
                   </Link>

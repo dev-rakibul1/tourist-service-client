@@ -8,15 +8,15 @@ const TravelMode = () => {
     <div>
       <div className=" ">
         <div className="hero-content flex-col lg:flex-row-reverse md:flex-row">
-          <div className="w-[50%]">
+          <div className="md:w-[50%] mx-auto px-2">
             <img src={imagesTour} className=" rounded-lg max-w-full" />
           </div>
-          <div className="w-[50%]">
-            <h4 className="text-xl py-4 font-bold">
+          <div className="md:w-[50%] mx-auto px-2">
+            <h4 className="md:text-xl text-md py-4 font-bold">
               Happy traveling{" "}
               <span className="text-pink-600"> in your life </span>
             </h4>
-            <h1 className="text-5xl font-bold tour-mode-title">
+            <h1 className="md:text-5xl text-2xl font-bold tour-mode-title">
               The travel to the any <br /> corner of the world!
             </h1>
             <p className="py-6">
