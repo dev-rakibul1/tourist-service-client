@@ -42,8 +42,8 @@ const PagesDetails = () => {
                 to={`/tourist-all-services/${service._id}`}
                 className="max-w-full block"
               >
-                <button className="btn btn-active btn-primary rounded-full">
-                  Read more
+                <button className="btn btn-active btn-primary rounded-full w-full">
+                  See details
                 </button>
               </Link>
             </div>
