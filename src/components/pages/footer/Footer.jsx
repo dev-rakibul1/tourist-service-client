@@ -1,9 +1,7 @@
 import React from "react";
 import logo from "../../../asset/tour_logo.png";
-import UseTitle from "./../../useTitle/UseTitle";
 
 const Footer = () => {
-  UseTitle("Footer");
   return (
     <div className="mt-32 bg-gray-200">
       <footer className="footer p-10  text-base-content w-[90%] mx-auto px-2">
