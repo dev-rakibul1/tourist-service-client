@@ -98,15 +98,18 @@ const Login = () => {
               <div className="form-control mt-6">
                 <button className="btn btn-primary rounded-full">Login</button>
               </div>
+            </form>
 
-              <p className="text-center mt-4">
+            {/* google login */}
+            <div>
+              <p className="text-center mt-2">
                 Create a new account?{" "}
                 <Link className="text-pink-600 mt-4" to="/register">
                   Register
                 </Link>
               </p>
 
-              <h2 className="or text-center">Or</h2>
+              <h2 className="or text-center py-4">Or</h2>
               <div className="text-center cursor-pointe  flex items-center justify-center">
                 <button
                   className=" border rounded-full w-6/12  flex items-center justify-center p-2 border-pink-600"
@@ -116,7 +119,7 @@ const Login = () => {
                   <span className="ml-4">Google</span>
                 </button>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </div>
